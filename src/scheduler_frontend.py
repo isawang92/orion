@@ -73,8 +73,9 @@ class PyScheduler:
                 print("(sched_frontend) finish barrier wait")
                 # run once to warm-up and setup
                 self._sched_lib.schedule(self._scheduler, num_clients, True, 0, True, 1, reef, sequential, reef_depth, hp_limit, update_start)
-                torch.cuda.synchronize()
                 print("(sched_frontend) after sched_lib.schedule")
+                torch.cuda.synchronize()
+                print("(sched_frontend) after cuda.synchronize")
                 for j in range(num_clients):
                     if (additional_kernel_files[j] is not None):
                         new_kernel_file = additional_kernel_files[j].encode('utf-8')
