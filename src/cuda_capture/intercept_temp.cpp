@@ -131,7 +131,9 @@ extern "C" {
 		int idx = get_idx();
 		assert (idx >= 0);
 		volatile bool* status_ar = client_request_status[idx];
-		while (!status_ar[it]);
+		printf("(intercept_temp block) idx=%d",idx);
+		while (!status_ar[it])
+			printf("(intercept_temp block) in while");
 	}
 
 	bool stop() {

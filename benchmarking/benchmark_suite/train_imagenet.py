@@ -161,26 +161,18 @@ def imagenet_loop(
                         if open_loop:
                             print("(train_imagenet) test2")
                             if (cur_time >= next_startup):
-                                #print(f"Client {tid}, submit!, batch_idx is {batch_idx}")
-                                print("(train_imagenet) test2.1")
+                                print(f"Client {tid}, submit!, batch_idx is {batch_idx}")
                                 gpu_data = batch[0].to(local_rank)
-                                print("(train_imagenet) test2.2")
                                 output = model(gpu_data)
-                                print("(train_imagenet) test2.3")
                                 block(backend_lib, batch_idx)
                                 print("(train_imagenet) test2.4")
                                 req_time = time.time()-next_startup
-                                print("(train_imagenet) test2.5")
                                 timings.append(req_time)
-                                print("(train_imagenet) test2.6")
-                                #print(f"Client {tid} finished! Wait! It took {req_time}")
+                                print(f"Client {tid} finished! Wait! It took {req_time}")
                                 if batch_idx>=10:
-                                    print("(train_imagenet) test2.7")
                                     next_startup += sleep_times[batch_idx]
                                 else:
-                                    print("(train_imagenet) test2.8")
                                     next_startup = time.time()
-                                print("(train_imagenet) test3")
                                 batch_idx,batch = next(train_iter)
                                 if (batch_idx == 1 or (batch_idx == 10)):
                                     barriers[0].wait()
@@ -189,12 +181,9 @@ def imagenet_loop(
                                         next_startup = time.time()
                                         start = time.time()
                                 dur = next_startup-time.time()
-                                print("(train_imagenet) test4")
                                 if (dur>0):
-                                    print("(train_imagenet) test5")
                                     while time.time() < next_startup:
                                         time.sleep(0.001)
-                                    print("(train_imagenet) test6")
                                 if check_stop(backend_lib):
                                     print("---- STOP!")
                                     break

@@ -412,6 +412,7 @@ void* Scheduler::busy_wait_profile(int num_clients, int iter, bool warmup, int w
 					streams[i] = -1;
 					fidx[i] = 0;
 					request_status[i][num_client_cur_iters[i]] = true;
+					printf("(scheduler_eval) i= %d, num_client_cur_iters[i]=%d",i,num_client_cur_iters[i]);
 					pthread_mutex_unlock(client_mutexes[i]);
 					DEBUG_PRINT("UNLOCK CLIENT %d\n", i);
 					num_client_cur_iters[i] += 1;
@@ -585,7 +586,8 @@ extern "C" {
 		**num_total_clients = num_clients;
 
 		for (int i=0; i<=num_clients; i++) {
-			DEBUG_PRINT("Scheduler setup the thread id at %d to be %d\n", i, (*thread_ids_all)[i]);
+			// DEBUG_PRINT("Scheduler setup the thread id at %d to be %d\n", i, (*thread_ids_all)[i]);
+			printf("(scheduler_eval) Scheduler setup the thread id at %d to be %d\n", i, (*thread_ids_all)[i]);
 		}
 
 		// 2. metadata structures
