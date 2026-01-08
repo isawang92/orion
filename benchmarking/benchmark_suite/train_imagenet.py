@@ -162,8 +162,11 @@ def imagenet_loop(
                             print("(train_imagenet) test2")
                             if (cur_time >= next_startup):
                                 #print(f"Client {tid}, submit!, batch_idx is {batch_idx}")
+                                print("(train_imagenet) test2.1")
                                 gpu_data = batch[0].to(local_rank)
+                                print("(train_imagenet) test2.2")
                                 output = model(gpu_data)
+                                print("(train_imagenet) test2.3")
                                 block(backend_lib, batch_idx)
                                 req_time = time.time()-next_startup
                                 timings.append(req_time)
