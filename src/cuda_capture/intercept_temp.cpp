@@ -129,9 +129,11 @@ DEBUG_PRINT("\n");
 extern "C" {
 	void block(int it) {
 		int idx = get_idx();
+		printf("(intercept_temp block) idx=%d\n",idx);
 		assert (idx >= 0);
+		printf("(intercept_temp block) pass assert\n");
 		volatile bool* status_ar = client_request_status[idx];
-		printf("(intercept_temp block) idx=%d",idx);
+		printf("(intercept_temp block) pass volatile bool\n");
 		while (!status_ar[it]);
 	}
 
