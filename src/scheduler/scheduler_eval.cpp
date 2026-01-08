@@ -676,7 +676,7 @@ extern "C" {
 		if (profile_mode)
 			scheduler->busy_wait_profile(num_clients, iter, warmup, warmup_iters, reef, seq, reef_depth, hp_limit, update_start);
 		// DEBUG_PRINT("exited sched func!\n");
-		print("exited sched func!\n");
+		printf("exited sched func!\n");
 		return NULL;
 	}
 
