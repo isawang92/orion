@@ -43,10 +43,11 @@ def conv_loop(batchsize, train, local_rank, barriers, tid):
 
     for i in range(10):
         print("Start epoch: ", i)
-
+        print("(conv) test0")
         start = time.time()
+        print("(conv) test1")
         start_iter = time.time()
-
+        print("(conv) test2")
         batch_idx = 0
 
         while batch_idx < 1:
