@@ -172,6 +172,7 @@ def imagenet_loop(
                                     next_startup += sleep_times[batch_idx]
                                 else:
                                     next_startup = time.time()
+                                print("(train_imagenet) test3")
                                 batch_idx,batch = next(train_iter)
                                 if (batch_idx == 1 or (batch_idx == 10)):
                                     barriers[0].wait()
@@ -180,9 +181,12 @@ def imagenet_loop(
                                         next_startup = time.time()
                                         start = time.time()
                                 dur = next_startup-time.time()
+                                print("(train_imagenet) test4")
                                 if (dur>0):
+                                    print("(train_imagenet) test5")
                                     while time.time() < next_startup:
                                         time.sleep(0.001)
+                                    print("(train_imagenet) test6")
                                 if check_stop(backend_lib):
                                     print("---- STOP!")
                                     break
