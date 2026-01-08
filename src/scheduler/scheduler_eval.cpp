@@ -671,10 +671,12 @@ extern "C" {
 
 	void* schedule(Scheduler* scheduler, int num_clients, bool profile_mode, int iter, bool warmup, int warmup_iters, bool reef, bool seq, int reef_depth, int hp_limit, int update_start) {
 
-		DEBUG_PRINT("entered sched func!\n");
+		// DEBUG_PRINT("entered sched func!\n");
+		printf("entered sched func!\n");
 		if (profile_mode)
 			scheduler->busy_wait_profile(num_clients, iter, warmup, warmup_iters, reef, seq, reef_depth, hp_limit, update_start);
-		DEBUG_PRINT("exited sched func!\n");
+		// DEBUG_PRINT("exited sched func!\n");
+		print("exited sched func!\n");
 		return NULL;
 	}
 
