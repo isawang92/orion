@@ -127,10 +127,10 @@ def imagenet_loop(
         timings=[]
         for i in range(1):
             print("Start epoch: ", i)
-
+            print("(train_imagenet) test0")
             while batch_idx < num_iters:
                 start_iter = time.time()
-
+                print("(train_imagenet) test1")
                 #torch.cuda.profiler.cudart().cudaProfilerStart()
                 if train:
                     #client_barrier.wait()
@@ -159,6 +159,7 @@ def imagenet_loop(
                         cur_time = time.time()
                         #### OPEN LOOP ####
                         if open_loop:
+                            print("(train_imagenet) test2")
                             if (cur_time >= next_startup):
                                 #print(f"Client {tid}, submit!, batch_idx is {batch_idx}")
                                 gpu_data = batch[0].to(local_rank)
