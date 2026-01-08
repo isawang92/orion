@@ -168,12 +168,17 @@ def imagenet_loop(
                                 output = model(gpu_data)
                                 print("(train_imagenet) test2.3")
                                 block(backend_lib, batch_idx)
+                                print("(train_imagenet) test2.4")
                                 req_time = time.time()-next_startup
+                                print("(train_imagenet) test2.5")
                                 timings.append(req_time)
+                                print("(train_imagenet) test2.6")
                                 #print(f"Client {tid} finished! Wait! It took {req_time}")
                                 if batch_idx>=10:
+                                    print("(train_imagenet) test2.7")
                                     next_startup += sleep_times[batch_idx]
                                 else:
+                                    print("(train_imagenet) test2.8")
                                     next_startup = time.time()
                                 print("(train_imagenet) test3")
                                 batch_idx,batch = next(train_iter)
