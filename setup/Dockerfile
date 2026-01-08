@@ -7,7 +7,8 @@ RUN apt-get install -y vim wget git
 RUN apt install -y libjpeg-dev zlib1g-dev tmux build-essential libssl-dev
 
 RUN apt-get -y install python3-pip
-RUN python3 -m pip install torch torchvision
+# RUN python3 -m pip install torch torchvision
+RUN python3 -m pip install torch==2.7.0 torchvision==0.22.0 torchaudio==2.7.0 --index-url https://download.pytorch.org/whl/cu126
 RUN python3 -m pip install numpy pandas pyyaml pynvml
 
 RUN git clone https://github.com/NVIDIA/DeepLearningExamples.git
